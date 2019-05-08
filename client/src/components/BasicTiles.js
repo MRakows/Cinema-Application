@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import tmdb from "../apis/tmdb";
+import TilesList from "./TilesList";
 
 class BasicTiles extends Component {
   state = { movie: [] };
@@ -20,7 +21,7 @@ class BasicTiles extends Component {
     return (
       <div>
         <div>Nav</div>
-        <div>List</div>
+        <TilesList movie={this.state} />
       </div>
     );
   }
