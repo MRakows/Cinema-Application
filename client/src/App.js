@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter } from 'react-router-dom';
 import Navbar from './components/layout/Navbar'
+
+import BasicTiles from "./components/BasicTiles";
+
 
 class App extends Component {
   state = {
@@ -42,11 +44,10 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
-        <div className="App">
-            <Navbar/>
-        </div>
-      </BrowserRouter>
+      <div className="App">
+        <BasicTiles />
+      </div>
+
     );
   }
 }
