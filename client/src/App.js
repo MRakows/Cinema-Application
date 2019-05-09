@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar'
 
 import BasicTiles from "./components/BasicTiles";
+import SelectedMovie from "./components/SelectedMovie";
 
 
 class App extends Component {
@@ -44,9 +45,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <BasicTiles />
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <Route exact path='/' component={BasicTiles} />
+          <Route path='/selected/:movie_id' component={SelectedMovie} />
+        </div>
+      </BrowserRouter>
+
 
     );
   }
