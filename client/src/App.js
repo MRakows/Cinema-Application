@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
+import { BrowserRouter } from 'react-router-dom';
+import Navbar from './components/layout/Navbar'
+
 import BasicTiles from "./components/BasicTiles";
+
 
 class App extends Component {
   state = {
@@ -43,6 +47,7 @@ class App extends Component {
       <div className="App">
         <BasicTiles />
       </div>
+
     );
   }
 }
