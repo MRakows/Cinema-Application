@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 1rem;
+    margin-top: 0;
+}
+
+.movie {
+    width: 300px;
+    /* padding: 10px; */
+    cursor: pointer;
+    margin: 20px;
+    transition: all ease-in-out 0.5s;
+}
+
+.movieTile {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.movie:hover {
+    transform: scale(1.2);
+}
