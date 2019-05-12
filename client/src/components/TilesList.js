@@ -1,14 +1,20 @@
 import React from "react";
 import SingleTile from "./SingleTile";
 
-const TilesList = props => {
-  const movieList = props.movie.movie;
+class TilesList extends React.Component {
+  constructor(props) {
+    super(props)
+    console.log('constructor in TilesList')
+  }
 
-  return (
-    <div>
-      <SingleTile film={movieList} />
-    </div>
-  );
+  render() {
+    console.log('render in TilesList')
+    return (
+      <div>
+        <SingleTile film={this.props.movie.movie} history={this.props.history}/>
+      </div>
+    );
+  }
 };
 
 export default TilesList;

@@ -6,6 +6,7 @@ class BasicTiles extends Component {
   state = { movie: [] };
 
   componentDidMount() {
+    console.log('componentDidMount in BasicTiles')
     const movies = async () => {
       await tmdb
         .get("/discover/movie?")
@@ -14,14 +15,23 @@ class BasicTiles extends Component {
     };
     movies();
   }
-  componentDidUpdate() {
+
+  componentWillUpdate() {
+    console.log('componentWillUpdate in BasicTiles')
     console.log(this.state.movie);
   }
+
+  componentDidUpdate() {
+    console.log('componentDidUpdate in BasicTiles')
+    console.log(this.state.movie);
+  }
+
   render() {
+    console.log('render in BasicTiles')
     return (
       <div>
         <div>Nav</div>
-        <TilesList movie={this.state} />
+        <TilesList movie={this.state} history={this.props.history}/>
       </div>
     );
   }
