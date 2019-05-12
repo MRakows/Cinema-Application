@@ -1,5 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const config = require('config');
+const passport = require('passport');
+require('mongoose').Promise = global.Promise
+
+const standardRegister = require('./routes/standardRegister');
+const facebookRegister = require('./routes/fbReg');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -8,6 +15,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
+app.use(express.static('public'));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use('/fb_auth', facebookRegister);
+app.use('/:movie_id/cinema/auth/sReg', standardRegister);
 
 app.get('/api/movies', (req, res) => {
     res.send({
@@ -23,3 +38,7 @@ app.post('/api/world', (req, res) => {
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
+
+mongoose.connect(config.get('db'), {useNewUrlParser: true})
+    .then(() => {console.log('Connected to database...')})
+    .catch((err) => {console.log(err)})

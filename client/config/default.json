@@ -1,0 +1,5 @@
+{
+    "db": "mongodb+srv://todoapp:1iqfzGn1WoVbco6u@tdacluster-wmftl.gcp.mongodb.net/cinema?retryWrites=true",
+    "fbAppSecret": "xxx",
+    "googleSecret": "xxx"
+}

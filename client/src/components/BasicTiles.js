@@ -20,8 +20,12 @@ class BasicTiles extends Component {
   render() {
     return (
       <div>
+<<<<<<< HEAD
         <div>Nav</div>
         <TilesList movie={this.state} />
+=======
+        <div>List</div>
+>>>>>>> save0
       </div>
     );
   }
