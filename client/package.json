@@ -3,9 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
     "materialize-css": "^1.0.0-rc.2",
-=======
     "bcrypt": "^3.0.6",
     "config": "^3.1.0",
     "joi": "^14.3.1",
@@ -14,16 +12,13 @@
     "passport-facebook": "^3.0.0",
     "passport-google-oauth": "^2.0.0",
     "passport-local": "^1.0.0",
->>>>>>> save0
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-facebook-login": "^4.1.1",
-    "react-google-login": "^5.0.4",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.0"
   },
   "scripts": {
-    "start": "set HTTPS=true&&react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
