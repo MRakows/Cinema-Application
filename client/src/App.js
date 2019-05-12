@@ -54,8 +54,6 @@ class App extends Component {
           <Route path='/:movie_id/cinema' component ={UsersAndSeats}/>
         </div>
       </BrowserRouter>
-
-
     );
   }
 }

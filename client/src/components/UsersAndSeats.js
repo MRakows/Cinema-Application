@@ -15,7 +15,7 @@ class UsersAndSeats extends React.Component {
         console.log(this.state.currentUserId)
         return(
             <div>
-                <Register switchUserId={this.switchUserId}/>
+                <p>Login/Register/Welcome</p>
                 <p>Seats</p>
             </div>
         )

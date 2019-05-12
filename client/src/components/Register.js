@@ -1,10 +1,11 @@
 import React from 'react';
 import axios from 'axios';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import '../fontello/fontello-43381865/css/fontello.css'
 import '../css/register.css'
-import {User} from '../models/User'
+import FacebookAuth from './FacebookAuth';
+import GoogleAuth from './GoogleAuth';
 
 class Register extends React.Component {
     state = {
@@ -22,7 +23,7 @@ class Register extends React.Component {
 
         console.log('check');
     
-        axios.post(`http://localhost:3000/${this.props.match.params.movie_id}/cinema/auth/sReg`, {
+        axios.post(`https://localhost:3000/${this.props.match.params.movie_id}/cinema/auth/sReg`, {
                 email: email,
                 password: password
             })
@@ -33,39 +34,50 @@ class Register extends React.Component {
                 console.log(err.response)
                 this.setRegStatus(err.response.headers.regstatus)
             })
-
-
-            // const userId = response.headers.userid;
-
-            // if (!userId) {
-            //     const regStatus = response.headers.regStatus;
-            //     return this.setRegStatus(regStatus);
-            // }
-
-            // this.props.switchUserId(userId)
     }
 
-    initFbRegister = () => {
-        window.location.href = "/fb_auth"
+    authUserViaFb = fbID => {
+        axios.post('https://localhost:3000/fb_auth', {
+            fbID: fbID
+        })
+        .then((response) => {
+            this.props.switchUserId(response.headers.userid)
+        })
+            .catch((err) => {
+            console.log(err.response)
+            this.setRegStatus(err.response.headers.regstatus)
+        })
+    }
+
+    authUserViaGoogle = googleID => {
+        axios.post('https://localhost:3000/google_auth', {
+            googleID: googleID
+        })
+        .then((response) => {
+            this.props.switchUserId(response.headers.userid)
+        })
+            .catch((err) => {
+            console.log(err.response)
+            this.setRegStatus(err.response.headers.regstatus)
+        })
     }
 
 
     render() {
-        console.log(this.props);
         return(
             <div className="blue">
                 <div className="container" style={{height: "auto", paddingTop: "10px"}}>
-                    <div className="row" style={{marginBottom: "5px"}}>
-                        <a onClick={this.initFbRegister} className="waves-effect waves-light btn col s10 push-s1 white black-text"><i className="icon-facebook-official left"/><span className="left" style={{fontWeight: "bold"}}>Register with Facebook</span></a>
+                    {/* <div className="row" style={{marginBottom: "5px"}}>
+                        <FacebookAuth authUserViaFb={this.authUserViaFb}/>
                     </div>
                     <div className="row" style={{marginBottom: "5px"}}>
-                        <a href="#" className="waves-effect waves-light btn col s10 push-s1 white black-text"><i className="icon-google left grey-text text-darken-4"/><span className="left" style={{fontWeight: "bold"}}>Register with Google</span></a>
+                        <GoogleAuth authUserViaGoogle={this.authUserViaGoogle}/>
                     </div>
                     <div className="row" style={{paddingTop: "10px"}}>
                         <div className="col s10 push-s1">
                             <div className="divider" style={{backgroundColor: "white"}}></div>
                         </div>
-                    </div>
+                    </div> */}
                     <div className="row">
                         <form className="col s10 push-s1" onSubmit={this.initRegister}>
                             <div className="row" style={{marginBottom: "5px"}}>
@@ -97,4 +109,4 @@ class Register extends React.Component {
     }
 }
 
-export default Register;
+export default withRouter(Register);
