@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "materialize-css": "^1.0.0-rc.2",
     "bcrypt": "^3.0.6",
     "config": "^3.1.0",
     "joi": "^14.3.1",
+    "materialize-css": "^1.0.0",
     "mongoose": "^5.5.7",
     "passport": "^0.4.0",
     "passport-facebook": "^3.0.0",
@@ -18,7 +18,7 @@
     "react-scripts": "3.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set HTTPS=true&&react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

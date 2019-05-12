@@ -8,6 +8,7 @@ require('mongoose').Promise = global.Promise
 const standardRegister = require('./routes/standardRegister');
 const facebookAuth = require('./routes/facebookAuth');
 const googleAuth = require('./routes/googleAuth');
+const standardLogin = require('./routes/standardLogin');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -23,6 +24,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/:movie_id/cinema/auth/sReg', standardRegister);
+app.use('/:movie_id/cinema/auth/sLogin', standardLogin);
 
 app.use('/fb_auth', facebookAuth);
 app.use('/google_auth', googleAuth);
