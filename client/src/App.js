@@ -5,6 +5,7 @@ import Navbar from './components/layout/Navbar'
 
 import BasicTiles from "./components/BasicTiles";
 import SelectedMovie from "./components/SelectedMovie";
+import UsersAndSeats from "./components/UsersAndSeats"
 
 
 class App extends Component {
@@ -14,11 +15,11 @@ class App extends Component {
     responseToPost: ""
   };
 
-  componentDidMount() {
-    this.callApi()
-      .then(res => this.setState({ response: res.express }))
-      .catch(err => console.log(err));
-  }
+  // componentDidMount() {
+  //   this.callApi()
+  //     .then(res => this.setState({ response: res.express }))
+  //     .catch(err => console.log(err));
+  // }
 
   callApi = async () => {
     const response = await fetch("/api/hello");
@@ -47,12 +48,12 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
+          <Navbar />
           <Route exact path='/' component={BasicTiles} />
           <Route path='/selected/:movie_id' component={SelectedMovie} />
+          <Route path='/:movie_id/cinema' component ={UsersAndSeats}/>
         </div>
       </BrowserRouter>
-
-
     );
   }
 }
