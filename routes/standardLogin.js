@@ -19,15 +19,17 @@ router.post('/', async function(req, res) {
         res.setHeader("loginStatus", "User with given email not found.");
         return res.status(404).send();
     } else {
-       try {
-           await bcrypt.compare(req.body.password, user.password);
-           res.setHeader('userId', user._id);
-           return res.status(200).send();
-       } catch (err) {
-            res.setHeader('loginStatus', 'Invalid password.');
-            return res.status(400).send()
+        bcrypt.compare(req.body.password, user.password, (err, result) => {
+            if(result==true) {
+                res.setHeader('userId', user._id);
+                return res.status(200).send();
+            } else {
+                res.setHeader('loginStatus', 'Invalid password.');
+                return res.status(400).send();
+            }
+        });
        }
-    }
-})
+    });
+
 
 module.exports = router;

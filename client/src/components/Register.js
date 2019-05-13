@@ -28,7 +28,7 @@ class Register extends React.Component {
                 password: password
             })
             .then((response) => {
-                this.props.switchState(response.headers.userid, 'welcome')
+                this.props.switchUserId(response.headers.userid)
             })
             .catch((err) => {
                 console.log(err.response)
@@ -41,7 +41,7 @@ class Register extends React.Component {
             fbID: fbID
         })
         .then((response) => {
-            this.props.switchState(response.headers.userid, 'welcome')
+            this.props.switchUserId(response.headers.userid)
         })
             .catch((err) => {
             console.log(err.response)
@@ -54,7 +54,7 @@ class Register extends React.Component {
             googleID: googleID
         })
         .then((response) => {
-            this.props.switchState(response.headers.userid, 'welcome')
+            this.props.switchUserId(response.headers.userid)
         })
             .catch((err) => {
             console.log(err.response)
@@ -63,13 +63,13 @@ class Register extends React.Component {
     }
     
     switchToLogin = () => {
-        this.props.switchState('', 'login');
+        this.props.switchView('login');
     }
 
     render() {
         return(
             <div className="blue">
-                <div className="container" style={{height: "auto", paddingTop: "10px"}}>
+                <div className="container" style={{height: "auto", paddingTop: "10px", paddingBottom: "10px"}}>
                     {/* <div className="row" style={{marginBottom: "5px"}}>
                         <FacebookAuth authUserViaFb={this.authUserViaFb}/>
                     </div>
@@ -103,7 +103,7 @@ class Register extends React.Component {
                             <a onClick={this.switchToLogin} className="white-text"><p style={{textDecoration: "underline"}}>Back to login</p></a>
                         </div>
                         <div className="col s7 push-s1">
-                            <p className="red-text text-accent-4" style={{fontWeight: "bold"}}>{this.state.regStatus}</p>
+                            <p className="amber-text" style={{fontWeight: "bold"}}>{this.state.regStatus}</p>
                         </div>
                     </div>
                 </div>

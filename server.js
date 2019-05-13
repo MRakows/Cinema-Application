@@ -9,6 +9,7 @@ const standardRegister = require('./routes/standardRegister');
 const facebookAuth = require('./routes/facebookAuth');
 const googleAuth = require('./routes/googleAuth');
 const standardLogin = require('./routes/standardLogin');
+const reservations = require('./routes/reservations');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -28,6 +29,7 @@ app.use('/:movie_id/cinema/auth/sLogin', standardLogin);
 
 app.use('/fb_auth', facebookAuth);
 app.use('/google_auth', googleAuth);
+app.use('/reservations', reservations);
 
 app.get('/api/movies', (req, res) => {
     res.send({

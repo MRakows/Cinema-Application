@@ -1,0 +1,67 @@
+.separator {
+    display: flex;
+    justify-content: center;
+}
+
+.sep-line {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sep-or {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.legend-row {
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-bottom: 0px!important;
+}
+
+.legend {
+    height: 2em;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.legend-1 {
+    justify-content: flex-start;
+}
+
+.legend-2 {
+    justify-content: center;
+}
+
+.legend-3 {
+    justify-content: flex-end;
+}
+
+.blank, .seat {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: stretch;
+    align-content: stretch;
+    justify-content: center;
+}
+
+.seats-row {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.square {
+    display: inline-block;
+    height: 21px;
+    min-width: 21px;
+}
+
+.seat > .square {
+    border: 1px solid black;
+    border-radius: 2px;
+}
