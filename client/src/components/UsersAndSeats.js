@@ -2,28 +2,42 @@ import React from 'react';
 
 import Register from './Register';
 import Login from './Login';
+import Seats from './Seats';
 
 class UsersAndSeats extends React.Component {
     state = {
         currentUserId: null,
-        upperView: 'login'
+        upperView: 'login',
+        displaySeats: false,
+        authSuccessful: false,
     }
 
-    switchState = (currentUserId, upperView) => {
-        this.setState({currentUserId, upperView});
+    componentDidUpdate = () => {
+        if(this.state.currentUserId) {
+            if(!this.state.authSuccessful)
+            this.setState({displaySeats: true, authSuccessful: true, upperView: 'welcome'})
+        }
+    }
+
+    switchUserId = currentUserId => {
+        this.setState({currentUserId});
+    }
+
+    switchView = upperView => {
+        this.setState({upperView});
     }
 
     renderUpperView = () => {
         let upperV;
         switch(this.state.upperView) {
             case 'login':
-                upperV = <Login switchState={this.switchState}/>
+                upperV = <Login switchUserId={this.switchUserId} switchView={this.switchView}/>
                 break;
             case 'register':
-                upperV = <Register switchState={this.switchState}/>
+                upperV = <Register switchUserId={this.switchUserId} switchView={this.switchView}/>
                 break;
             case 'welcome':
-                upperV = <div className="container"><p>Welcome to the cinema</p><p>Your id: {this.state.currentUserId}</p></div>
+                upperV = <div className="container" style={{height: "auto"}}><p>Welcome to the cinema</p><p>Your id: {this.state.currentUserId}</p></div>
                 break;
             default:
                 upperV = <div>Error</div>
@@ -32,12 +46,21 @@ class UsersAndSeats extends React.Component {
         return upperV;
     }
 
+    renderLowerView = () => {
+        let lowerV;
+        if(this.state.displaySeats) {
+            lowerV = <Seats userId={this.state.currentUserId} />
+        }
+
+        return lowerV;
+    }
+
     render() {
-        console.log(this.state.currentUserId)
+        console.log(this.state)
         return(
             <div>
-                {this.renderUpperView()}
-                <p>Seats</p>
+                <div>{this.renderUpperView()}</div>
+                <div>{this.renderLowerView()}</div>
             </div>
         )
     }

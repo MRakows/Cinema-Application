@@ -30,7 +30,7 @@ class Login extends Component {
                 password: password
             })
             .then((response) => {
-                this.props.switchState(response.headers.userid, 'welcome')
+                this.props.switchUserId(response.headers.userid)
             })
             .catch((err) => {
                 console.log(err.response)
@@ -39,7 +39,7 @@ class Login extends Component {
     }
 
     switchToRegister = () => {
-        this.props.switchState('', 'register');
+        this.props.switchView('register');
     }
 
     authUserViaFb = fbID => {
@@ -47,7 +47,7 @@ class Login extends Component {
                 fbID: fbID
             })
             .then((response) => {
-                this.props.switchState(response.headers.userid, 'welcome')
+                this.props.switchUserId(response.headers.userid)
             })
             .catch((err) => {
                 console.log(err.response)
@@ -60,7 +60,7 @@ class Login extends Component {
                 googleID: googleID
             })
             .then((response) => {
-                this.props.switchState(response.headers.userid, 'welcome')
+                this.props.switchUserId(response.headers.userid)
             })
             .catch((err) => {
                 console.log(err.response)
@@ -71,7 +71,7 @@ class Login extends Component {
     render() {
     return(
             <div className="blue">
-                <div className="container" style={{height: "auto", paddingTop: "10px"}}>
+                <div className="container" style={{height: "auto", paddingTop: "10px", paddingBottom: "10px"}}>
                     <div className="row" style={{marginBottom: "5px"}}>
                         <FacebookAuth authUserViaFb={this.authUserViaFb}/>
                     </div>
@@ -102,10 +102,10 @@ class Login extends Component {
                     </div>
                     <div className="row">
                         <div className="col s3 push-s1">
-                            <a onClick={this.switchToRegister} className="white-text">Register</a>
+                            <a onClick={this.switchToRegister} className="white-text" style={{textDecoration: "underline"}}>Register</a>
                         </div>
                         <div className="col s7 push-s1">
-                            <p className="red-text text-accent-4" style={{fontWeight: "bold"}}>{this.state.loginStatus}</p>
+                            <p className="amber-text" style={{fontWeight: "bold"}}>{this.state.loginStatus}</p>
                         </div>
                     </div>
                 </div>
