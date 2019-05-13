@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 
@@ -7,23 +7,25 @@ import '../css/register.css'
 import FacebookAuth from './FacebookAuth';
 import GoogleAuth from './GoogleAuth';
 
-class Register extends React.Component {
+class Login extends Component {
     state = {
-        regStatus: ""
+        loginStatus: ""
     }
 
-    setRegStatus = (regStatus) => {
-        this.setState({ regStatus })
+    setLoginStatus = (loginStatus) => {
+        this.setState({
+            loginStatus
+        })
     }
 
-    initRegister = async e => {
+    initLogin = async e => {
         e.preventDefault();
-        const email = document.querySelector('#reg_email').value
-        const password = document.querySelector('#reg_password').value
+        const email = document.querySelector('#login_email').value
+        const password = document.querySelector('#login_password').value
 
         console.log('check');
-    
-        axios.post(`https://localhost:3000/${this.props.match.params.movie_id}/cinema/auth/sReg`, {
+
+        axios.post(`https://localhost:3000/${this.props.match.params.movie_id}/cinema/auth/sLogin`, {
                 email: email,
                 password: password
             })
@@ -32,45 +34,45 @@ class Register extends React.Component {
             })
             .catch((err) => {
                 console.log(err.response)
-                this.setRegStatus(err.response.headers.regstatus)
+                this.setLoginStatus(err.response.headers.loginstatus)
             })
+    }
+
+    switchToRegister = () => {
+        this.props.switchState('', 'register');
     }
 
     authUserViaFb = fbID => {
         axios.post('https://localhost:3000/fb_auth', {
-            fbID: fbID
-        })
-        .then((response) => {
-            this.props.switchState(response.headers.userid, 'welcome')
-        })
+                fbID: fbID
+            })
+            .then((response) => {
+                this.props.switchState(response.headers.userid, 'welcome')
+            })
             .catch((err) => {
-            console.log(err.response)
-            this.setRegStatus(err.response.headers.regstatus)
-        })
+                console.log(err.response)
+                this.setLoginStatus(err.response.headers.loginstatus)
+            })
     }
 
     authUserViaGoogle = googleID => {
         axios.post('https://localhost:3000/google_auth', {
-            googleID: googleID
-        })
-        .then((response) => {
-            this.props.switchState(response.headers.userid, 'welcome')
-        })
+                googleID: googleID
+            })
+            .then((response) => {
+                this.props.switchState(response.headers.userid, 'welcome')
+            })
             .catch((err) => {
-            console.log(err.response)
-            this.setRegStatus(err.response.headers.regstatus)
-        })
-    }
-    
-    switchToLogin = () => {
-        this.props.switchState('', 'login');
+                console.log(err.response)
+                this.setLoginStatus(err.response.headers.loginstatus)
+            })
     }
 
     render() {
-        return(
+    return(
             <div className="blue">
                 <div className="container" style={{height: "auto", paddingTop: "10px"}}>
-                    {/* <div className="row" style={{marginBottom: "5px"}}>
+                    <div className="row" style={{marginBottom: "5px"}}>
                         <FacebookAuth authUserViaFb={this.authUserViaFb}/>
                     </div>
                     <div className="row" style={{marginBottom: "5px"}}>
@@ -80,36 +82,36 @@ class Register extends React.Component {
                         <div className="col s10 push-s1">
                             <div className="divider" style={{backgroundColor: "white"}}></div>
                         </div>
-                    </div> */}
+                    </div>
                     <div className="row">
-                        <form className="col s10 push-s1" onSubmit={this.initRegister}>
+                        <form className="col s10 push-s1" onSubmit={this.initLogin}>
                             <div className="row" style={{marginBottom: "5px"}}>
                                 <div className="input-field col s12" style={{marginTop: "0.2rem", marginBottom: "0.2rem"}}>
-                                    <input id="reg_email" type="email" name="email" placeholder="Email" className="white-text"/>
+                                    <input id="login_email" type="email" name="email" placeholder="Email" className="white-text"/>
                                 </div>
                             </div>
                             <div className="row" style={{marginBottom: "5px"}}>
                                 <div className="input-field col s12" style={{marginTop: "0.2rem", marginBottom: "0.2rem"}}>
-                                    <input id="reg_password" type="password" name="password" placeholder="Password" className="white-text"/>
+                                    <input id="login_password" type="password" name="password" placeholder="Password" className="white-text"/>
                                 </div>
                             </div>
                             <div className="row" style={{marginBottom: "5px"}}>
-                                <input type="submit" value="register" className="col s12 btn waves-effect waves-light white black-text"></input>
+                                <input type="submit" value="login" className="col s12 btn waves-effect waves-light white black-text"></input>
                             </div>
                         </form>
                     </div>
                     <div className="row">
                         <div className="col s3 push-s1">
-                            <a onClick={this.switchToLogin} className="white-text"><p style={{textDecoration: "underline"}}>Back to login</p></a>
+                            <a onClick={this.switchToRegister} className="white-text">Register</a>
                         </div>
                         <div className="col s7 push-s1">
-                            <p className="red-text text-accent-4" style={{fontWeight: "bold"}}>{this.state.regStatus}</p>
+                            <p className="red-text text-accent-4" style={{fontWeight: "bold"}}>{this.state.loginStatus}</p>
                         </div>
                     </div>
                 </div>
             </div>
         )
-    }
+  }
 }
 
-export default withRouter(Register);
+export default withRouter(Login);

@@ -1,21 +1,42 @@
 import React from 'react';
 
-import Register from './Register'
+import Register from './Register';
+import Login from './Login';
 
 class UsersAndSeats extends React.Component {
     state = {
-        currentUserId: null
+        currentUserId: null,
+        upperView: 'login'
     }
 
-    switchUserId = userId => {
-        this.setState({currentUserId: userId});
+    switchState = (currentUserId, upperView) => {
+        this.setState({currentUserId, upperView});
+    }
+
+    renderUpperView = () => {
+        let upperV;
+        switch(this.state.upperView) {
+            case 'login':
+                upperV = <Login switchState={this.switchState}/>
+                break;
+            case 'register':
+                upperV = <Register switchState={this.switchState}/>
+                break;
+            case 'welcome':
+                upperV = <div className="container"><p>Welcome to the cinema</p><p>Your id: {this.state.currentUserId}</p></div>
+                break;
+            default:
+                upperV = <div>Error</div>
+        }
+
+        return upperV;
     }
 
     render() {
         console.log(this.state.currentUserId)
         return(
             <div>
-                <p>Login/Register/Welcome</p>
+                {this.renderUpperView()}
                 <p>Seats</p>
             </div>
         )
