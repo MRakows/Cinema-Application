@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import { BrowserRouter, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
-
+import RegistrationConfirmation from "./components/RegistrationConfirmation";
 import BasicTiles from "./components/BasicTiles";
 import SelectedMovie from "./components/SelectedMovie";
 import UsersAndSeats from "./components/UsersAndSeats";
@@ -50,6 +50,7 @@ class App extends Component {
           <Navbar />
           <Route exact path="/" component={BasicTiles} />
           <Route path="/selected/:movie_id/" component={SelectedMovie} />
+          <Route path="/:movie_id/confirmation" component={RegistrationConfirmation} />
           <Route path="/:movie_id/cinema" component={UsersAndSeats} />
         </div>
       </BrowserRouter>
