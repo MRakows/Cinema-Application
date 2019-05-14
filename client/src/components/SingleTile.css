@@ -6,9 +6,11 @@
     text-decoration: none;
 }
 
-h1 {
-    font-size: 1rem;
+p {
+    color: rgb(0, 0, 0);
+    font-size: 1.2rem;
     margin-top: 0;
+    font-weight: bold;
 }
 
 .movie {
@@ -26,5 +28,5 @@ h1 {
 }
 
 .movie:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
