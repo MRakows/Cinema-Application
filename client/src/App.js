@@ -49,7 +49,7 @@ class App extends Component {
         <div className="App">
           <Navbar />
           <Route exact path="/" component={BasicTiles} />
-          <Route path="/:movie_id" component={SelectedMovie} />
+          <Route path="/selected/:movie_id/" component={SelectedMovie} />
           <Route path="/:movie_id/cinema" component={UsersAndSeats} />
         </div>
       </BrowserRouter>

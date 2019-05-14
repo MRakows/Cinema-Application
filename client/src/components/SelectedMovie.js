@@ -10,9 +10,7 @@ class SelectedMovie extends React.Component {
   };
 
   componentDidMount() {
-    console.log(this.props.match.params.movie_id);
     let id = this.props.match.params.movie_id;
-    console.log(id);
 
     const movies = async () => {
       await tmdb
