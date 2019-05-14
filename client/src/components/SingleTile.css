@@ -15,10 +15,14 @@ p {
 
 .movie {
     width: 300px;
-    /* padding: 10px; */
     cursor: pointer;
     margin: 20px;
     transition: all ease-in-out 0.5s;
+}
+
+img {
+    filter: drop-shadow(5px 5px 4px #bebebe);
+    border-radius: 3px;
 }
 
 .movieTile {
