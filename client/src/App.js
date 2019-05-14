@@ -6,6 +6,7 @@ import Navbar from "./components/layout/Navbar";
 import BasicTiles from "./components/BasicTiles";
 import SelectedMovie from "./components/SelectedMovie";
 import UsersAndSeats from "./components/UsersAndSeats";
+import ReservationSummary from "./components/ReservationSummary";
 
 class App extends Component {
   state = {
@@ -51,6 +52,7 @@ class App extends Component {
           <Route exact path="/" component={BasicTiles} />
           <Route path="/selected/:movie_id/" component={SelectedMovie} />
           <Route path="/:movie_id/cinema" component={UsersAndSeats} />
+          <Route path="/reservationSummary/:movie_id/:user_id/:seats_string" component={ReservationSummary}/>
         </div>
       </BrowserRouter>
     );

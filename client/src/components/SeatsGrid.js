@@ -68,11 +68,10 @@ export default class SeatsGrid extends Component {
     componentDidUpdate = () => {
         this.prepareSeats();
         this.refreshSeats();
-        document.getElementById('amount').innerText = `${this.state.selectedSeats.length * 4} €`
+        document.getElementById('amount').innerText = `${this.state.selectedSeats.length}`
     }
 
     render() {
-        console.log(this.state);
         return (
             <div className="row">
                     <div className="col s12 seats-wrapper">

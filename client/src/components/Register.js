@@ -21,8 +21,6 @@ class Register extends React.Component {
         const email = document.querySelector('#reg_email').value
         const password = document.querySelector('#reg_password').value
 
-        console.log('check');
-    
         axios.post(`https://localhost:3000/${this.props.match.params.movie_id}/cinema/auth/sReg`, {
                 email: email,
                 password: password
@@ -31,7 +29,6 @@ class Register extends React.Component {
                 this.props.switchUserId(response.headers.userid)
             })
             .catch((err) => {
-                console.log(err.response)
                 this.setRegStatus(err.response.headers.regstatus)
             })
     }
@@ -44,7 +41,6 @@ class Register extends React.Component {
             this.props.switchUserId(response.headers.userid)
         })
             .catch((err) => {
-            console.log(err.response)
             this.setRegStatus(err.response.headers.regstatus)
         })
     }
@@ -57,7 +53,6 @@ class Register extends React.Component {
             this.props.switchUserId(response.headers.userid)
         })
             .catch((err) => {
-            console.log(err.response)
             this.setRegStatus(err.response.headers.regstatus)
         })
     }
@@ -100,7 +95,7 @@ class Register extends React.Component {
                     </div>
                     <div className="row">
                         <div className="col s3 push-s1">
-                            <a onClick={this.switchToLogin} className="white-text"><p style={{textDecoration: "underline"}}>Back to login</p></a>
+                            <a onClick={this.switchToLogin}><p style={{textDecoration: "underline"}} className="white-text">Back to login</p></a>
                         </div>
                         <div className="col s7 push-s1">
                             <p className="amber-text" style={{fontWeight: "bold"}}>{this.state.regStatus}</p>
