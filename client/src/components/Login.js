@@ -23,8 +23,6 @@ class Login extends Component {
         const email = document.querySelector('#login_email').value
         const password = document.querySelector('#login_password').value
 
-        console.log('check');
-
         axios.post(`https://localhost:3000/${this.props.match.params.movie_id}/cinema/auth/sLogin`, {
                 email: email,
                 password: password
@@ -33,7 +31,6 @@ class Login extends Component {
                 this.props.switchUserId(response.headers.userid)
             })
             .catch((err) => {
-                console.log(err.response)
                 this.setLoginStatus(err.response.headers.loginstatus)
             })
     }
@@ -50,7 +47,6 @@ class Login extends Component {
                 this.props.switchUserId(response.headers.userid)
             })
             .catch((err) => {
-                console.log(err.response)
                 this.setLoginStatus(err.response.headers.loginstatus)
             })
     }
@@ -63,7 +59,6 @@ class Login extends Component {
                 this.props.switchUserId(response.headers.userid)
             })
             .catch((err) => {
-                console.log(err.response)
                 this.setLoginStatus(err.response.headers.loginstatus)
             })
     }

@@ -21,8 +21,6 @@ class Register extends React.Component {
         const email = document.querySelector('#reg_email').value
         const password = document.querySelector('#reg_password').value
 
-        console.log('check');
-    
         axios.post(`https://localhost:3000/${this.props.match.params.movie_id}/cinema/auth/sReg`, {
                 email: email,
                 password: password
@@ -31,7 +29,6 @@ class Register extends React.Component {
                 this.props.switchUserId(response.headers.userid)
             })
             .catch((err) => {
-                console.log(err.response)
                 this.setRegStatus(err.response.headers.regstatus)
             })
     }
@@ -44,7 +41,6 @@ class Register extends React.Component {
             this.props.switchUserId(response.headers.userid)
         })
             .catch((err) => {
-            console.log(err.response)
             this.setRegStatus(err.response.headers.regstatus)
         })
     }
@@ -57,7 +53,6 @@ class Register extends React.Component {
             this.props.switchUserId(response.headers.userid)
         })
             .catch((err) => {
-            console.log(err.response)
             this.setRegStatus(err.response.headers.regstatus)
         })
     }
