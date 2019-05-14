@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
-import { BrowserRouter, Route } from 'react-router-dom';
-import Navbar from './components/layout/Navbar'
+import { BrowserRouter, Route } from "react-router-dom";
+import Navbar from "./components/layout/Navbar";
 
 import BasicTiles from "./components/BasicTiles";
 import SelectedMovie from "./components/SelectedMovie";
-import UsersAndSeats from "./components/UsersAndSeats"
-
+import UsersAndSeats from "./components/UsersAndSeats";
 
 class App extends Component {
   state = {
@@ -49,9 +48,9 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <Navbar />
-          <Route exact path='/' component={BasicTiles} />
-          <Route path='/selected/:movie_id' component={SelectedMovie} />
-          <Route path='/:movie_id/cinema' component ={UsersAndSeats}/>
+          <Route exact path="/" component={BasicTiles} />
+          <Route path="/:movie_id" component={SelectedMovie} />
+          <Route path="/:movie_id/cinema" component={UsersAndSeats} />
         </div>
       </BrowserRouter>
     );
