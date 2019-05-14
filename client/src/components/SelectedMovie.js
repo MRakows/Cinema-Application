@@ -3,6 +3,7 @@ import "../fontello/css/fontello.css";
 import tmdb from "../apis/tmdb";
 import React from "react";
 import { Link } from "react-router-dom";
+import { withRouter } from 'react-router-dom';
 
 class SelectedMovie extends React.Component {
   state = {
@@ -24,6 +25,10 @@ class SelectedMovie extends React.Component {
         .catch(error => console.log(error));
     };
     movies();
+  }
+
+  goToCinema = () => {
+    this.props.history.push(`/${this.state.id}/cinema`);
   }
 
   render() {
@@ -55,4 +60,4 @@ class SelectedMovie extends React.Component {
   }
 }
 
-export default SelectedMovie;
+export default withRouter(SelectedMovie);

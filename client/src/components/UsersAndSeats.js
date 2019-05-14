@@ -3,6 +3,7 @@ import React from 'react';
 import Register from './Register';
 import Login from './Login';
 import Seats from './Seats';
+import BackButton from './BackButton';
 
 class UsersAndSeats extends React.Component {
     state = {
@@ -60,6 +61,7 @@ class UsersAndSeats extends React.Component {
             <div>
                 <div>{this.renderUpperView()}</div>
                 <div>{this.renderLowerView()}</div>
+                <BackButton />
             </div>
         )
     }

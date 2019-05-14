@@ -95,7 +95,7 @@ class Register extends React.Component {
                     </div>
                     <div className="row">
                         <div className="col s3 push-s1">
-                            <a onClick={this.switchToLogin} className="white-text"><p style={{textDecoration: "underline"}}>Back to login</p></a>
+                            <a onClick={this.switchToLogin}><p style={{textDecoration: "underline"}} className="white-text">Back to login</p></a>
                         </div>
                         <div className="col s7 push-s1">
                             <p className="amber-text" style={{fontWeight: "bold"}}>{this.state.regStatus}</p>

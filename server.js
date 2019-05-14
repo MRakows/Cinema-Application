@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const config = require('config');
 const passport = require('passport');
+const cors = require('cors');
 require('mongoose').Promise = global.Promise
 
 const standardRegister = require('./routes/standardRegister');
@@ -12,6 +13,11 @@ const standardLogin = require('./routes/standardLogin');
 const reservations = require('./routes/reservations');
 
 const app = express();
+
+app.use(cors({
+    origin: 'https://localhost:3000',
+    credentials: true
+}));
 const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
