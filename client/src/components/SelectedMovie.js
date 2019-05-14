@@ -2,6 +2,7 @@ import "./SelectedMovie.css";
 import "../fontello/css/fontello.css";
 import tmdb from "../apis/tmdb";
 import React from "react";
+import { Link } from "react-router-dom";
 
 class SelectedMovie extends React.Component {
   state = {
@@ -44,9 +45,11 @@ class SelectedMovie extends React.Component {
             <h3 className="subtitle">{this.state.movie.genres[0].name}</h3>
             <p className="description">{this.state.movie.overview}</p>
           </div>
-          <nav className="back">
-            <i className="icon-down-open-big" />
-          </nav>
+          <Link to={"/" + this.state.movie.id + "/cinema"}>
+            <nav className="back">
+              <i className="icon-down-open-big" />
+            </nav>
+          </Link>
         </div>
       );
     } else return null;
